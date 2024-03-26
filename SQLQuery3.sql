@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------------------
--- database seç
+-- database sec
 use nortwind;
 
 
@@ -8,13 +8,13 @@ use nortwind;
 -- nortwind databasenden Categories tablosunundaki verileri listeleyelim.
 select * from Categories;
 
--- sadece CategoryID, CategoryName, Description bunlarý görmek istiyorum
+-- sadece CategoryID, CategoryName, Description bunlari gormek istiyorum
 select CategoryID, CategoryName, Description from Categories;
 
--- nortwind databasenden Categories tablosunundaki ,categoryID 5 ve üstünde olan verileri listeleyelim.
+-- nortwind databasenden Categories tablosunundaki ,categoryID 5 ve ustunde olan verileri listeleyelim.
 select * from Categories where CategoryID>=5;
 
--- nortwind databasenden Categories tablosunundaki ,categoryID 5 ve üstünde olan verileri categoryID'sini küçükten büyüðe doðru listeleyelim. 
+-- nortwind databasenden Categories tablosunundaki ,categoryID 5 ve ustunde olan verileri categoryID'sini kucukten buyuge dogru listeleyelim. 
 select * from Categories where  CategoryID>=5;
 select * from Categories where  CategoryID>=5 order by categoryID asc;
 
@@ -22,7 +22,7 @@ select * from Categories where  CategoryID>=5 order by categoryID asc;
 --------------------------------------------------------------------------------------------------
 -- Order By
 
--- nortwind databasenden Categories tablosunundaki ,categoryID 5 ve üstünde olan verileri categoryID'sini büyükten küçüðe  listeleyelim. 
+-- nortwind databasenden Categories tablosunundaki ,categoryID 5 ve ustunde olan verileri categoryID'sini buyukten kucuge  listeleyelim. 
 select * from Categories where  CategoryID>=5 order by categoryID desc;
 
 --------------------------------------------------------------------------------------------------
@@ -35,37 +35,37 @@ select * from [nortwind].[dbo].[Categories];
 use nortwind
 select * from Categories;
 
---  Nortwind databasesinden Category tablosunundan CategoryId 5 ve yukarýsýndaki datalarý listeyelim.
+--  Nortwind databasesinden Category tablosunundan CategoryId 5 ve yukarisindaki datalari listeyelim.
 select * from Categories where CategoryID>=5;
 
---  Nortwind databasesinden Category tablosunundan CategoryId 3 ile 6 arasýndakini listeyelim.
+--  Nortwind databasesinden Category tablosunundan CategoryId 3 ile 6 arasindakini listeyelim.
 select * from Categories where CategoryID between 3 and 6
 
---  Nortwind databasesinden Category tablosunundan CategoryId 3 ile 6 arasýndakini datalar büyükten küçüðe doðru listeyelim.
+--  Nortwind databasesinden Category tablosunundan CategoryId 3 ile 6 arasindakini datalar buyukten kucuge  dogru listeyelim.
 select * from Categories where CategoryID between 3 and 6 order by CategoryID desc
 
 -- Like (Filter)
--- nortwind database Categories tablosundaki categoryName sutunundaki baþlangýçý 'B' ile baþlayanlarý listeyelim.
+-- nortwind database Categories tablosundaki categoryName sutunundaki baslangici 'B' ile baslayanlari listeyelim.
 select * from Categories where CategoryName like 'B%';
 
--- nortwind database Categories tablosundaki categoryName sutunundaki baþlangýçý 's' ile bitenleri listeyelim.
+-- nortwind database Categories tablosundaki categoryName sutunundaki baslangici 's' ile bitenleri listeyelim.
 select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like '%s';
 
--- nortwind database Categories tablosundaki categoryName sutunundaki baþlangýçý 's' ile bitenleri büyükten küçüðe doðru listeyelim.
+-- nortwind database Categories tablosundaki categoryName sutunundaki bitisi 's' ile bitenleri buyukten kucuge dogru listeyelim.
 select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like '%s' order by  cat.CategoryName  desc;
 
 --------------------------------------------------------------------------------------------------
 -- Agreaggate
--- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarýsýnda olan verilerin categoryID'lerini toplasýn
+-- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerini toplasin
 select sum(CategoryID) from Categories where  CategoryID>=5;
 
--- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarýsýnda olan verilerin categoryID'lerden en büyüðünü bulunuz.
+-- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerden en buyugunu bulunuz.
 select max(CategoryID) from Categories where  CategoryID>=5;
 
--- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarýsýnda olan verilerin categoryID'lerden en küçüðü bulunuz.
+-- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerden en kucugunu  bulunuz.
 select min(CategoryID) from Categories where  CategoryID>=5;
 
--- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarýsýnda olan verilerin categoryID'lerden ortalamasý.
+-- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerden ortalamasï¿½.
 select avg(CategoryID) from Categories where  CategoryID>=5;
 
 --------------------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ select avg(CategoryID) from Categories where  CategoryID>=5;
 
 select top 4 * from Categories;
 select top (4) * from Categories;
--- Sondan 4 Category Listesini görelim.
+-- Sondan 4 Category Listesini gorelim.
 select top (4) * from Categories order by CategoryID desc;
 
 SELECT TOP (4) [CategoryID]
@@ -86,7 +86,7 @@ SELECT TOP (4) [CategoryID]
 SELECT TOP (4) * FROM Categories
 
 --------------------------------------------------------------------------------------------------
--- DISTINCT (Veri tekrarýný önlemek için)
+-- DISTINCT (Veri tekrarini onlemek icin)
 select distinct CategoryName from Categories;
 
 --------------------------------------------------------------------------------------------------
