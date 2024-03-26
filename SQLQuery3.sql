@@ -57,7 +57,17 @@ select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like '
 -- nortwind database Categories tablosundaki categoryName sutunundaki içinde  'on'  gecenleri buyukten kucuge dogru listeyelim.
 select * from Categories where CategoryName like '%on%' order by CategoryName desc;
 
+-- nortwind database Categories tablosundaki categoryName sutunundaki içinde  'on' gecen  kaç tane veri vardır ?
+select count(CategoryName) from Categories where CategoryName like '%on%';
 
+select count(CategoryName) as categoryKacTaneVeri from Categories where CategoryName like '%on%';
+select count(CategoryName) as "Kategoriye Uyan Kac Tane Veri" from Categories where CategoryName like '%on%';
+
+
+-- nortwind database Categories tablosundaki categoryName sutunundaki içinde  içinde 7 karakterli olacak ilk karakteri S, ikinci karakter e, son karakteri d olanları categoryName sutuna göre büyükten küçüğe doğru sıralayım. 
+-- nortwind database Categories tablosundaki categoryName sutunundaki içinde  içinde 7 karakterli olacak ilk karakteri S, ikinci karakter e, son karakteri d olan kaç tane verivardır? 
+
+-- IN (SubQuery)
 --------------------------------------------------------------------------------------------------
 -- Aggreagate
 -- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerini toplasin
