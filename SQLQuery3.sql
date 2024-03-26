@@ -29,7 +29,7 @@ select * from Categories where  CategoryID>=5 order by categoryID desc;
 -- Where Between In Like 
 
 -- Between
---  Nortwind databasesinden Category tablosunu listeyelim.
+-- Nortwind databasesinden Category tablosunu listeyelim.
 select * from [nortwind].[dbo].[Categories];
 
 use nortwind
@@ -54,8 +54,12 @@ select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like '
 -- nortwind database Categories tablosundaki categoryName sutunundaki bitisi 's' ile bitenleri buyukten kucuge dogru listeyelim.
 select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like '%s' order by  cat.CategoryName  desc;
 
+-- nortwind database Categories tablosundaki categoryName sutunundaki içinde  'on'  gecenleri buyukten kucuge dogru listeyelim.
+select * from Categories where CategoryName like '%on%' order by CategoryName desc;
+
+
 --------------------------------------------------------------------------------------------------
--- Agreaggate
+-- Aggreagate
 -- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerini toplasin
 select sum(CategoryID) from Categories where  CategoryID>=5;
 
