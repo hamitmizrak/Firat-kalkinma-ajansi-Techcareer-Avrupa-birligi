@@ -53,6 +53,13 @@ SELECT TOP (4) * FROM Categories
 -- DISTINCT (Veri tekrarýný önlemek için)
 select distinct CategoryName from Categories;
 
+--------------------------------------------------------------------------------------------------
+-- ALIAS (Takma Ad)
+select [nortwind].[dbo].[Categories].[CategoryName] from Categories;
+select CategoryName from Categories;
+select Categories.CategoryName from Categories;
+select cat.CategoryName from Categories as cat;
+
 -- ------------------------------------------------------------------------------------
 --  nortwind databasenden Customers tablosunu listeleyelim.
 select * from Customers;
