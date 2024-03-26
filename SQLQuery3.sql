@@ -27,6 +27,8 @@ select * from Categories where  CategoryID>=5 order by categoryID desc;
 
 --------------------------------------------------------------------------------------------------
 -- Where Between In Like 
+
+-- Between
 --  Nortwind databasesinden Category tablosunu listeyelim.
 select * from [nortwind].[dbo].[Categories];
 
@@ -41,6 +43,16 @@ select * from Categories where CategoryID between 3 and 6
 
 --  Nortwind databasesinden Category tablosunundan CategoryId 3 ile 6 arasýndakini datalar büyükten küçüðe doðru listeyelim.
 select * from Categories where CategoryID between 3 and 6 order by CategoryID desc
+
+-- Like (Filter)
+-- nortwind database Categories tablosundaki categoryName sutunundaki baþlangýçý 'B' ile baþlayanlarý listeyelim.
+select * from Categories where CategoryName like 'B%';
+
+-- nortwind database Categories tablosundaki categoryName sutunundaki baþlangýçý 's' ile bitenleri listeyelim.
+select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like '%s';
+
+-- nortwind database Categories tablosundaki categoryName sutunundaki baþlangýçý 's' ile bitenleri büyükten küçüðe doðru listeyelim.
+select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like '%s' order by  cat.CategoryName  desc;
 
 --------------------------------------------------------------------------------------------------
 -- Agreaggate
