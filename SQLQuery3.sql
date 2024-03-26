@@ -1,6 +1,9 @@
+--------------------------------------------------------------------------------------------------
 -- database seç
 use nortwind;
 
+
+--------------------------------------------------------------------------------------------------
 -- DQL (select)
 -- nortwind databasenden Categories tablosunundaki verileri listeleyelim.
 select * from Categories;
@@ -16,9 +19,30 @@ select * from Categories where  CategoryID>=5;
 select * from Categories where  CategoryID>=5 order by categoryID asc;
 
 
+--------------------------------------------------------------------------------------------------
+-- Order By
+
 -- nortwind databasenden Categories tablosunundaki ,categoryID 5 ve üstünde olan verileri categoryID'sini büyükten küçüðe  listeleyelim. 
 select * from Categories where  CategoryID>=5 order by categoryID desc;
 
+--------------------------------------------------------------------------------------------------
+-- Where Between In Like 
+--  Nortwind databasesinden Category tablosunu listeyelim.
+select * from [nortwind].[dbo].[Categories];
+
+use nortwind
+select * from Categories;
+
+--  Nortwind databasesinden Category tablosunundan CategoryId 5 ve yukarýsýndaki datalarý listeyelim.
+select * from Categories where CategoryID>=5;
+
+--  Nortwind databasesinden Category tablosunundan CategoryId 3 ile 6 arasýndakini listeyelim.
+select * from Categories where CategoryID between 3 and 6
+
+--  Nortwind databasesinden Category tablosunundan CategoryId 3 ile 6 arasýndakini datalar büyükten küçüðe doðru listeyelim.
+select * from Categories where CategoryID between 3 and 6 order by CategoryID desc
+
+--------------------------------------------------------------------------------------------------
 -- Agreaggate
 -- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarýsýnda olan verilerin categoryID'lerini toplasýn
 select sum(CategoryID) from Categories where  CategoryID>=5;
@@ -55,6 +79,7 @@ select distinct CategoryName from Categories;
 
 --------------------------------------------------------------------------------------------------
 -- ALIAS (Takma Ad)
+
 select [nortwind].[dbo].[Categories].[CategoryName] from Categories;
 select CategoryName from Categories;
 select Categories.CategoryName from Categories;
