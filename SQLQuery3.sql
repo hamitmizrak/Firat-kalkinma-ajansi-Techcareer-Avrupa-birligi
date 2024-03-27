@@ -223,7 +223,11 @@ select cot(45) as 'Cotanjant'
 
 --------------------------------------------------------------------------------------------------
 -- STRING
-
+select * from Categories
+select upper(cat.CategoryName) as 'Kategori Adı'  from Categories as cat
+select lower(cat.CategoryName) as 'Kategori Adı'  from Categories as cat
+select ltrim(cat.CategoryName) as 'Soldaki boşlukları al'  from Categories as cat
+select rtrim(cat.CategoryName) as 'Sağdaki boşlukları al'  from Categories as cat
 
 --------------------------------------------------------------------------------------------------
 -- TARIH
