@@ -202,12 +202,13 @@ select '4'+'7' as toplam;
 -- CAST
 -- cast (Tamsayi = INTEGER,integer)
 select '4'+'7' as toplam;
-select CAST('4' AS INTEGER)+ cast('7' as integer);
+select CAST('4' AS INTEGER)+ CAST('7' as integer);
 select (CAST('4' AS INTEGER)+ cast('7' as integer)) as toplam;
 
 --------------------------------------------------------------------------------------------------
 -- MATH
 select pi();
+
 select abs(-12) as 'mutlak değer';
 select sqrt(16) as 'karekök';
 select power(2,5) as 'üslü sayılar';
