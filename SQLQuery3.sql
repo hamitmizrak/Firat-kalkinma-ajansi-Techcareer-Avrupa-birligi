@@ -26,6 +26,20 @@ select * from Categories where  CategoryID>=5 order by categoryID asc;
 select * from Categories where  CategoryID>=5 order by categoryID desc;
 
 --------------------------------------------------------------------------------------------------
+-- Aggreagate
+-- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerini toplasin
+select sum(CategoryID) from Categories where  CategoryID>=5;
+
+-- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerden en buyugunu bulunuz.
+select max(CategoryID) from Categories where  CategoryID>=5;
+
+-- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerden en kucugunu  bulunuz.
+select min(CategoryID) from Categories where  CategoryID>=5;
+
+-- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerden ortalamas�.
+select avg(CategoryID) from Categories where  CategoryID>=5;
+
+--------------------------------------------------------------------------------------------------
 -- Where Between In Like 
 
 -- Between
@@ -75,19 +89,13 @@ select count(*) from [nortwind].[dbo].[Categories] as cat where cat.CategoryName
 
 
 -- IN (SubQuery)
---------------------------------------------------------------------------------------------------
--- Aggreagate
--- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerini toplasin
-select sum(CategoryID) from Categories where  CategoryID>=5;
+-- nortwind databasenden Categories tablosundaki categoryID büyük olanı listeyelim.
 
--- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerden en buyugunu bulunuz.
-select max(CategoryID) from Categories where  CategoryID>=5;
+-- Manuel
+select * from Categories where CategoryID=13;
 
--- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerden en kucugunu  bulunuz.
-select min(CategoryID) from Categories where  CategoryID>=5;
-
--- nortwind databasenden Categories tablosunundaki categoryID=5 ve yukarisinda olan verilerin categoryID'lerden ortalamas�.
-select avg(CategoryID) from Categories where  CategoryID>=5;
+-- Dynamics 
+select * from Categories where CategoryID=(select max(CategoryID) from Categories);
 
 --------------------------------------------------------------------------------------------------
 -- TOP
