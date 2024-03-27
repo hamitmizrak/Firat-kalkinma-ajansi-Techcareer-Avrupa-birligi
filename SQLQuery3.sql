@@ -64,8 +64,11 @@ select count(CategoryName) as categoryKacTaneVeri from Categories where Category
 select count(CategoryName) as "Kategoriye Uyan Kac Tane Veri" from Categories where CategoryName like '%on%';
 
 
--- nortwind database Categories tablosundaki categoryName sutunundaki içinde  içinde 7 karakterli olacak ilk karakteri S, ikinci karakter e, son karakteri d olanları categoryName sutuna göre büyükten küçüğe doğru sıralayım. 
--- nortwind database Categories tablosundaki categoryName sutunundaki içinde  içinde 7 karakterli olacak ilk karakteri S, ikinci karakter e, son karakteri d olan kaç tane verivardır? 
+-- nortwind database Categories tablosundaki categoryName sutunundaki içinde  7 karakterli olacak ilk karakteri S, ikinci karakter e, son karakteri d olan categoryID sutuna göre büyükten küçüğe doğru sıralayım. 
+select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like 'Se____d' order by cat.CategoryID desc;
+
+-- nortwind database Categories tablosundaki categoryName sutunundaki içinde  7 karakterli olacak ilk karakteri S, ikinci karakter e, son karakteri d olan kaç tane veri vardır? 
+select count(*) from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like 'Se____d' ;
 
 -- IN (SubQuery)
 --------------------------------------------------------------------------------------------------
