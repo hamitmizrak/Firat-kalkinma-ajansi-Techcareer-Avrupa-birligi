@@ -62,6 +62,9 @@ select * from Categories where CategoryID between 3 and 6 order by CategoryID de
 -- nortwind database Categories tablosundaki categoryName sutunundaki baslangici 'B' ile baslayanlari listeyelim.
 select * from Categories where CategoryName like 'B%';
 
+-- nortwind databasenden Categories tablosundaki categoryName 'Be' ile başlayanları listeleyim. 
+select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like 'Be%'
+
 -- nortwind database Categories tablosundaki categoryName sutunundaki baslangici 's' ile bitenleri listeyelim.
 select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like '%s';
 
@@ -98,8 +101,7 @@ select * from Categories where CategoryID=(select max(CategoryID) from Categorie
 -- nortwind databasenden Categories tablosundaki categoryID küçük olanı listeyelim.
 select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryID=(select min(CategoryID) from Categories);
 
--- nortwind databasenden Categories tablosundaki categoryName 'Be' ile başlayanları listeleyim. 
-select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like 'Be%'
+
  
 --------------------------------------------------------------------------------------------------
 -- TOP
@@ -129,6 +131,29 @@ select [nortwind].[dbo].[Categories].[CategoryName] from Categories;
 select CategoryName from Categories;
 select Categories.CategoryName from Categories;
 select cat.CategoryName from Categories as cat;
+
+--------------------------------------------------------------------------------------------------
+-- IS NULL 
+select  * from Categories;
+-- Nortwind databasesinden Categories tablosunu Picture kolundaki null olanları listeleyelim. 
+-- 1.YOL
+use nortwind;
+select * from Categories where Picture is null; 
+
+-- 2.YOL
+select * from [nortwind].[dbo].[Categories] as cat where cat.Picture is null 
+
+-- Nortwind databasesinden Categories tablosunu Picture kolundaki null olanları kaç tane veri var ? 
+select count(*) as nullOlanPictureVerileri from [nortwind].[dbo].[Categories] as cat where cat.Picture is null 
+-- 1.YOL
+select count(*) as "null Olan Picture Verileri" from [nortwind].[dbo].[Categories] as cat where cat.Picture is null 
+-- 2.YOL
+select count(cat.Picture) as "null Olan Picture Verileri" from [nortwind].[dbo].[Categories] as cat where cat.Picture is null 
+
+
+-- Nortwind databasesinden Categories tablosunu Picture kolundaki null olanları dataların yerine picture_change olarak yazalım.
+
+
 
 -- ------------------------------------------------------------------------------------
 --  nortwind databasenden Customers tablosunu listeleyelim.
