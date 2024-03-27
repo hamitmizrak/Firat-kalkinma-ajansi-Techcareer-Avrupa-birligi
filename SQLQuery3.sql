@@ -18,6 +18,12 @@ select * from Categories where CategoryID>=5;
 select * from Categories where  CategoryID>=5;
 select * from Categories where  CategoryID>=5 order by categoryID asc;
 
+-- ------------------------------------------------------------------------------------
+--  nortwind databasenden Customers tablosunu listeleyelim.
+select * from Customers;
+
+-- nortwind databasenden Customers tablosundan sadece CustomerID Listeyelim ?
+select CustomerID from Customers;
 
 --------------------------------------------------------------------------------------------------
 -- Order By
@@ -100,8 +106,6 @@ select * from Categories where CategoryID=(select max(CategoryID) from Categorie
 
 -- nortwind databasenden Categories tablosundaki categoryID küçük olanı listeyelim.
 select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryID=(select min(CategoryID) from Categories);
-
-
  
 --------------------------------------------------------------------------------------------------
 -- TOP
@@ -135,6 +139,7 @@ select cat.CategoryName from Categories as cat;
 --------------------------------------------------------------------------------------------------
 -- IS NULL 
 select  * from Categories;
+
 -- Nortwind databasesinden Categories tablosunu Picture kolundaki null olanları listeleyelim. 
 -- 1.YOL
 use nortwind;
@@ -150,17 +155,45 @@ select count(*) as "null Olan Picture Verileri" from [nortwind].[dbo].[Categorie
 -- 2.YOL
 select count(cat.Picture) as "null Olan Picture Verileri" from [nortwind].[dbo].[Categories] as cat where cat.Picture is null 
 
+-- Nortwind databasesinden Categories tablosunu Picture kolundaki null olanları datalardan ilkine picture null yerine picture_change olarak yazalım.
 
--- Nortwind databasesinden Categories tablosunu Picture kolundaki null olanları dataların yerine picture_change olarak yazalım.
+--------------------------------------------------------------------------------------------------
+-- IS NOT NULL
+-- Nortwind databasesinden Categories tablosunundan Picture kolundaki null olmayanları listeleyelim. 
+-- 1.YOL
+use nortwind;
+select * from Categories where Picture is not null
+-- 2.YOL
+select * from [nortwind].[dbo].[Categories] as cat where cat.Picture is not null
+
+-- Nortwind databasesinden Categories tablosunu Picture kolundaki null olmayanları kaç tane data vardır? 
+-- 1.YOL
+select count(*) as pictureNullOlmayan from Categories where Picture is not null;
+select count(*) as "picture Null Olmayan" from Categories where Picture is not null;
+
+-- 2.YOL
+select count(*) as "picture Null Olmayan Veri Sayısı" from [nortwind].[dbo].[Categories] as cat where cat.Picture is not null
+
+--------------------------------------------------------------------------------------------------
+-- UNION
 
 
+--------------------------------------------------------------------------------------------------
+-- ARITMETIK
 
--- ------------------------------------------------------------------------------------
---  nortwind databasenden Customers tablosunu listeleyelim.
-select * from Customers;
 
--- nortwind databasenden Customers tablosundan sadece CustomerID Listeyelim ?
-select CustomerID from Customers;
+--------------------------------------------------------------------------------------------------
+-- MATH
+
+--------------------------------------------------------------------------------------------------
+-- CASE
+
+--------------------------------------------------------------------------------------------------
+-- STRING
+
+
+--------------------------------------------------------------------------------------------------
+-- TARIH
 
 -- ------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
@@ -181,3 +214,9 @@ update Categories SET CategoryName='Laptop', Description='Lenovo 1244' where Cat
 
 -- Delete
 delete from Categories where CategoryID=13
+
+
+-- ------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+-- DDL (Data Definition Language)
