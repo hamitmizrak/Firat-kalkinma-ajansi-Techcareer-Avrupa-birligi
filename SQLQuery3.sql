@@ -199,7 +199,11 @@ select '4'+7 as toplam;
 select '4'+'7' as toplam;
 
 --------------------------------------------------------------------------------------------------
--- CASE
+-- CAST
+-- cast (Tamsayi = INTEGER,integer)
+select '4'+'7' as toplam;
+select CAST('4' AS INTEGER)+ cast('7' as integer);
+select (CAST('4' AS INTEGER)+ cast('7' as integer)) as toplam;
 
 --------------------------------------------------------------------------------------------------
 -- MATH
@@ -238,7 +242,12 @@ delete from Categories where CategoryID=13
 ----------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 -- DDL (Data Definition Language)
+-- drop 
+-- create
 
+-- Datatypes
+-- Mssql üzerinde tablo oluşturmak
+-- Script üzerinde tablo oluşturmak
 
 --------------------------------------------------------------------------------------------------
 -- UNION (datatype, script, table, PK)
