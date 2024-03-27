@@ -86,8 +86,6 @@ select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like '
 select count(*) from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like 'Se____d' ;
 
 
-
-
 -- IN (SubQuery)
 -- nortwind databasenden Categories tablosundaki categoryID büyük olanı listeyelim.
 
@@ -97,6 +95,12 @@ select * from Categories where CategoryID=13;
 -- Dynamics 
 select * from Categories where CategoryID=(select max(CategoryID) from Categories);
 
+-- nortwind databasenden Categories tablosundaki categoryID küçük olanı listeyelim.
+select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryID=(select min(CategoryID) from Categories);
+
+-- nortwind databasenden Categories tablosundaki categoryName 'Be' ile başlayanları listeleyim. 
+select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryName like 'Be%'
+ 
 --------------------------------------------------------------------------------------------------
 -- TOP
 
