@@ -157,6 +157,9 @@ select count(cat.Picture) as "null Olan Picture Verileri" from [nortwind].[dbo].
 
 -- Nortwind databasesinden Categories tablosundaki Picture kolundaki birinci null olan datalardan null yerine picture_change olarak yazalım.
 
+-- Veri Eklemek
+insert into Categories(CategoryName,Description) values('Bilgisayar','MSI-2')
+
 select * from Categories ;
 -- 1.YOL (Manuel)
 update Categories SET Picture='picture_change' where CategoryID=9
@@ -182,19 +185,26 @@ select count(*) as "picture Null Olmayan" from Categories where Picture is not n
 -- 2.YOL
 select count(*) as "picture Null Olmayan Veri Sayısı" from [nortwind].[dbo].[Categories] as cat where cat.Picture is not null
 
---------------------------------------------------------------------------------------------------
--- UNION
-
 
 --------------------------------------------------------------------------------------------------
--- ARITMETIK
+-- ARITMETIK (+ - * / %)
+select 4+7 as toplam;
+select 8-2 as cikarma;
+select 4*7 as carpma;
+select 8/3 as bolme;
+select 8%3 as kalan;
 
+select 4+7 as toplam;
+select '4'+7 as toplam;
+select '4'+'7' as toplam;
+
+--------------------------------------------------------------------------------------------------
+-- CASE
 
 --------------------------------------------------------------------------------------------------
 -- MATH
 
---------------------------------------------------------------------------------------------------
--- CASE
+
 
 --------------------------------------------------------------------------------------------------
 -- STRING
@@ -228,3 +238,11 @@ delete from Categories where CategoryID=13
 ----------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 -- DDL (Data Definition Language)
+
+
+--------------------------------------------------------------------------------------------------
+-- UNION (datatype, script, table, PK)
+-- UNIONALL (datatype, script, table, PK)
+select * from Region
+union
+select * from [nortwind].[dbo].[RegionData]
