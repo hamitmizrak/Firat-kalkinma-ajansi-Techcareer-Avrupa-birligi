@@ -155,14 +155,22 @@ select count(*) as "null Olan Picture Verileri" from [nortwind].[dbo].[Categorie
 -- 2.YOL
 select count(cat.Picture) as "null Olan Picture Verileri" from [nortwind].[dbo].[Categories] as cat where cat.Picture is null 
 
--- Nortwind databasesinden Categories tablosunu Picture kolundaki null olanları datalardan ilkine picture null yerine picture_change olarak yazalım.
+-- Nortwind databasesinden Categories tablosundaki Picture kolundaki birinci null olan datalardan null yerine picture_change olarak yazalım.
+
+select * from Categories ;
+-- 1.YOL (Manuel)
+update Categories SET Picture='picture_change' where CategoryID=9
+
+-- 2.YOL (Dynamics)
+update Categories SET Picture='picture_change' where CategoryID=(select min(CategoryID) from Categories where Picture is null)
 
 --------------------------------------------------------------------------------------------------
 -- IS NOT NULL
 -- Nortwind databasesinden Categories tablosunundan Picture kolundaki null olmayanları listeleyelim. 
 -- 1.YOL
 use nortwind;
-select * from Categories where Picture is not null
+select * from Categories where Picture is not null;
+
 -- 2.YOL
 select * from [nortwind].[dbo].[Categories] as cat where cat.Picture is not null
 
