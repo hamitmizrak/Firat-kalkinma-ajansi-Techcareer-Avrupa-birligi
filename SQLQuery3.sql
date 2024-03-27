@@ -207,7 +207,17 @@ select (CAST('4' AS INTEGER)+ cast('7' as integer)) as toplam;
 
 --------------------------------------------------------------------------------------------------
 -- MATH
+select pi();
+select abs(-12) as 'mutlak değer';
+select sqrt(16) as 'karekök';
+select power(2,5) as 'üslü sayılar';
+select floor(6.9) as 'aşağı yuvarla';
+select ceiling(4.1) as 'yukarı yuvarla'
 
+select sin(45) as 'Sinüs'
+select cos(45) as 'Cosinüs'
+select tan(45) as 'Tanjant'
+select cot(45) as 'Cotanjant'
 
 
 --------------------------------------------------------------------------------------------------
