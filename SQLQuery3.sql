@@ -243,9 +243,20 @@ select SUBSTRING(cat.CategoryName,1,3) as 'Category Name' from Categories as cat
 -- replace: Değiştirmek için kullanıyoruz.
 select * from Categories;
 select REPLACE(cat.CategoryName,'Bilgisayar','Değişti') as 'Değiştir' from Categories as cat
--- Nortwind databasesinden Categories tablosundaki 'Bilgisayar' kelimesi yerine 'Computer' olarak değiştirin. 
+-- Nortwind databasesinden Categories tablosundaki 'Bilgisayar' kelimesi yerine 'Computer' olarak değiştirin.=> 
+-- keyword: subquery,update,replace
+-- 1.YOL
+use nortwind;
+update Categories SET CategoryName=REPLACE(cat.CategoryName,'Bilgisayar','Computer') from Categories as cat
 
--- update Categories SET CategoryName='Laptop', Description='Lenovo 1244' where CategoryID=13
+-- 2.YOL
+update [nortwind].[dbo].[Categories]  SET CategoryName=replace(cat.CategoryName,'Bilgisayar','Computer') from Categories as cat
+
+-- Nortwind databasesinden Categories tablosundaki CategoryID en küçük veri için bütün 'e' harfi yerine 'x' yazalım.
+
+
+
+select DATALENGTH(cat.CategoryName) as 'Değiştir' from Categories as cat
 
 -- https://www.w3schools.com/sql/default.asp
 
@@ -289,3 +300,7 @@ delete from Categories where CategoryID=13
 select * from Region
 union
 select * from [nortwind].[dbo].[RegionData]
+
+
+
+update Categories SET CategoryName=REPLACE(cat.CategoryName,'Değişti','Bilgisayar') from Categories as cat
