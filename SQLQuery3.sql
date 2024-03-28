@@ -542,3 +542,42 @@ values
 select * from student
 union
 select * from teacher
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+-- GROP BY
+
+
+-- HAVING 
+
+
+-- GROP BY AND HAVING
+select * from Products
+
+SELECT pro.ProductName, AVG(pro.UnitPrice) AS price
+FROM Products as pro
+GROUP BY pro.ProductName
+HAVING AVG(pro.UnitPrice) > 30;
+
+
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+-- JOIN
+-- PK: ProductID
+select * from Categories;
+
+-- PK: ProductID
+-- FK: CategoryID
+select * from Products;
+
+-- Inner Join
+select cat.CategoryName, pro.ProductName from Categories as cat inner join Products as pro ON cat.CategoryID=pro.CategoryID;
+
+-- Left Join
+select cat.CategoryName, pro.ProductName from Categories as cat left join Products as pro ON cat.CategoryID=pro.CategoryID;
+
+-- Right Join
+select cat.CategoryName, pro.ProductName from Categories as cat right join Products as pro ON cat.CategoryID=pro.CategoryID;
+
