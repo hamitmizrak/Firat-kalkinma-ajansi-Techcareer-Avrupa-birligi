@@ -312,7 +312,7 @@ select datediff(month,'01.01.1990',getdate());
 select datediff (year,'01.01.1990',getdate());
 
 -- DATEPART()
--- datepart() = Zamanı Göstersin
+-- datepart() = o zaman diliminin  hangi  hafta ,ay,yıl, olduğunu gösterir
 select datepart (hour,getdate()) as 'Saat'
 select datepart(day,getdate()) as 'Gün'
 select datepart (WEEK,getdate()) as 'Yılın kaçıncı Haftası'
