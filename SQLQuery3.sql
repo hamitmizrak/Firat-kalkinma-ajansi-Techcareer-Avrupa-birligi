@@ -320,6 +320,12 @@ select datepart (month,getdate()) as 'Yılın kaçıncı Ay'
 select datepart (year,getdate()) 'YEAR'
 
 -- ------------------------------------------------------------------------------------
+
+
+select (c.CategoryID*2) as result from Categories as c
+select (s.vize_notes*0.6+s.final_notes*0.4) as sonuc from student as s;
+
+
 ----------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 -- DML (Data Manipulation Language)
@@ -343,10 +349,86 @@ delete from Categories where CategoryID=13
 ----------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 -- DDL (Data Definition Language)
--- drop 
--- create
+
+-- DATABASE
+-- CREATE
+CREATE DATABASE ScriptDb;
+
+-- DROP
+-- 1.YOL
+DROP DATABASE ScriptDb;
+
+-- 2.YOL
+USE master
+GO
+DROP DATABASE ScriptDb;
+GO
+
+-- RENAME
+EXEC sp_renamedb 'eski_veritabani_adı', 'yeni_veritabani_adı';
+EXEC sp_renamedb 'ScriptDatabase', 'ScriptDb';
+
+
+
 
 -- Datatypes
+/* 
+Sıklıkla Kullanılan Data Types;
+Tamsayılarda: int
+Virgüllü Sayılarda: float
+Kelimelerde: nvarchar
+Tarih: Date veya DateTime
+*/
+
+-- TAMSAYI
+/*
+TINYINT: Çok küçük tamsayı değerlerini saklamak için kullanılır. Örneğin, 0 ile 255 arasındaki değerler TINYINT türünde saklanabilir. Boyut olarak 1 byte alana sahiptir.
+0<=TINYINT<=255
+SMALLINT: Küçük tamsayı değerlerini saklamak için kullanılır. INT'ten daha küçük tamsayı değerlerini saklayabilir. Boyut olarak 2 byte alana sahiptir.
+INT: Tamsayı değerleri saklamak için kullanılır. Örneğin, 1, 2, -100, 0 gibi değerler INT türünde saklanabilir. Boyut olarak 4 byte alana sahiptir.
+BIGINT: Büyük tamsayı değerlerini saklamak için kullanılır. INT'ten daha büyük tamsayı değerlerini saklayabilir. Boyut olarak 8 byte alana sahiptir.
+TINYINT<SMALLINT<INT<BIGINT
+*/
+
+-- VİRGüLLÜ SAYI
+/* 
+DECIMAL(p, s) veya NUMERIC(p, s): Ondalık sayıları saklamak için kullanılır. p, toplam basamak sayısını (ondalık noktadan önce ve sonra toplam basamak sayısı) belirtirken s, ondalık basamak sayısını belirtir.
+FLOAT: Kayan nokta sayılarını saklamak için kullanılır. Büyük veya küçük ondalık sayılar için uygundur.
+Örnek: 44.10
+REAL: İkili hassaslıkta kayan nokta sayılarını saklamak için kullanılır. FLOAT'tan daha düşük bir hassasiyete sahiptir.
+Örnek: 44.101222222
+*/
+
+-- KELİMESEL
+/*
+
+VARCHAR(n) veya NVARCHAR(n): Değişken uzunluklu karakter dizilerini saklamak için kullanılır. 
+n, maksimum karakter sayısını belirtir. 
+VARCHAR, ASCII karakterlerini (sadece ingilizce harfler) 
+NVARCHAR ise Unicode karakterlerini saklar. (Çince, Arapça vs)
+Dikkat: nvarchar Dynamics bir datatypes'dir.
+Örnek  nvarchar(255) Anlamı: En fazla 255 karakter kullanabilirsin. ancak eğer siz 10 karakter kullanırsanız geriye kalan 255-10= 245 kadar bit kadar yer kaplamıyor.
+
+CHAR(n) veya NCHAR(n): Sabit uzunluklu karakter dizilerini saklamak için kullanılır. n, sabit karakter dizisinin uzunluğunu belirtir.
+Daha hızlı ve ilkeldir.
+Dinamik değildir.
+*/
+
+-- TARİH 
+/*
+DATE: Tarih değerlerini saklamak için kullanılır. YYYY-MM-DD biçimindedir.
+TIME: Saat değerlerini saklamak için kullanılır. HH:MM:SS.SSS biçimindedir.
+DATETIME: Tarih ve saat değerlerini saklamak için kullanılır. YYYY-MM-DD HH:MM:SS.SSS biçimindedir.
+*/
+
+--  BIT AND BINARY
+/*
+BIT: Mantıksal (boolean) değerleri saklamak için kullanılır. 0 veya 1 değerlerini alır.
+BINARY(n) veya VARBINARY(n): Sabit veya değişken uzunluklu binary verileri saklamak için kullanılır.
+Binary: 0 ve 1'lerdan oluşan
+*/
+
+
 -- Mssql üzerinde tablo oluşturmak
 -- Script üzerinde tablo oluşturmak
 
