@@ -432,9 +432,113 @@ Binary: 0 ve 1'lerdan oluşan
 -- Mssql üzerinde tablo oluşturmak
 -- Script üzerinde tablo oluşturmak
 
+-- TRUNCATE
+-- truncate: Tablonun içeriğini temizlemek için kullanıyoruz.
+select * from [ScriptDb].[dbo].[Person]
+truncate table [ScriptDb].[dbo].[Person]
+
 --------------------------------------------------------------------------------------------------
--- UNION (datatype, script, table, PK)
+-- TABLE SCRIPT
+-- 1.TABLE
+use ScriptDb;
+create table EmployeesData(
+	EmployeeID INT  PRIMARY KEY IDENTITY NOT NULL,
+	FirstName NVARCHAR(50),
+	LastName NVARCHAR(50),
+	Department NVARCHAR(50),
+	Salary DECIMAL(10,2)
+);
+/*
+EmployeeID INT  PRIMARY KEY IDENTITY NOT NULL,
+INT: data type (tam sayı)
+PRIMARY KEY: Birincil anahtar
+IDENTITY: AI Otomatik artmak için kullanırız. (Unique olması için
+NOT NULL: Boş geçilemez 
+*/ 
+
+-- 2.TABLE
+-- Eğer benim verdiğim tablo database'de varsa ekleme yoksa ekle
+use ScriptDb;
+if not exists (select * from sysobjects where name='notes' and xtype='U')
+    CREATE TABLE student (
+	StudentId INT PRIMARY KEY IDENTITY NOT NULL,
+	studentName varchar(50) NOT NULL,
+	studentSurname varchar(50) NOT NULL,
+	city varchar(50) NOT NULL,
+	Phone_Number varchar(20) NOT NULL,
+	studentVizeNotes int NOT NULL,
+	studentFinalNotes int NOT NULL,
+	Registration_Date date,
+	created_at DATETIME NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+);
+go
+
+insert into 
+student(studentName,studentSurname,city,Phone_Number,studentVizeNotes,studentFinalNotes,Registration_Date) 
+values
+('Adı-1','Soyadı-1','Bingöl','11122233',80,80,'2024-03-28');
+
+insert into 
+student(studentName,studentSurname,city,Phone_Number,studentVizeNotes,studentFinalNotes,Registration_Date) 
+values
+('Adı-2','Soyadı-2','Malatya','11122233',70,70,'2024-03-28');
+
+select * from [ScriptDb].[dbo].[student] as stu;
+
+
+-- 3.TABLE
+-- Kategoriler tablosu
+CREATE TABLE Categories (
+    CategoryID INT PRIMARY KEY IDENTITY NOT NULL,
+    CategoryName NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(MAX)
+);
+
+-- Ürünler tablosu
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY IDENTITY NOT NULL, -- PK: Primary Key
+    ProductName NVARCHAR(100) NOT NULL,
+    CategoryID INT, -- FK: Foreign Key
+    Price DECIMAL(10, 2),
+    StockQuantity INT,
+    Description NVARCHAR(MAX),
+    CONSTRAINT FK_Products_Categories FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+);
+
+
+----------------------------------------------------------------------------------------------------------------------
+-- Hayali Sutun
+select (stu.studentVizeNotes*0.4+stu.studentFinalNotes*0.6) as result from [ScriptDb].[dbo].[student] as stu;
+
+
+--------------------------------------------------------------------------------------------------
+-- UNION : aynı sutun sayısına sahip tabloları alt alta görmek istediğimizde kullanıyoruz.
 -- UNIONALL (datatype, script, table, PK)
-select * from Region
+use ScriptDb;
+if not exists (select * from sysobjects where name='notes' and xtype='U')
+    CREATE TABLE teacher (
+	StudentId INT PRIMARY KEY IDENTITY NOT NULL,
+	studentName varchar(50) NOT NULL,
+	studentSurname varchar(50) NOT NULL,
+	city varchar(50) NOT NULL,
+	Phone_Number varchar(20) NOT NULL,
+	studentVizeNotes int NOT NULL,
+	studentFinalNotes int NOT NULL,
+	Registration_Date date,
+	created_at DATETIME NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+);
+go
+
+insert into 
+student(studentName,studentSurname,city,Phone_Number,studentVizeNotes,studentFinalNotes,Registration_Date) 
+values
+('Adı-1','Soyadı-1','Bingöl','11122233',80,80,'2024-03-28');
+
+insert into 
+teacher(studentName,studentSurname,city,Phone_Number,studentVizeNotes,studentFinalNotes,Registration_Date) 
+values
+('Adı-22','Soyadı-22','Bingöl','11122233',80,80,'2024-03-28');
+
+select * from student
 union
-select * from [nortwind].[dbo].[RegionData]
+select * from teacher
