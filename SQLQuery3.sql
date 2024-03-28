@@ -226,6 +226,7 @@ select cot(45) as 'Cotanjant'
 --------------------------------------------------------------------------------------------------
 -- STRING
 select * from Categories
+
 -- Bütün karakterleri BÜYÜK harf yap
 select upper(cat.CategoryName) as 'Kategori Adı'  from Categories as cat
 
@@ -254,15 +255,41 @@ update Categories SET CategoryName=REPLACE(cat.CategoryName,'Bilgisayar','Comput
 -- 2.YOL
 update [nortwind].[dbo].[Categories]  SET CategoryName=replace(cat.CategoryName,'Bilgisayar','Computer') from Categories as cat
 
+-- SORU
 -- Nortwind databasesinden Categories tablosundaki CategoryID en küçük olan veri için bütün 'e' harfi yerine 'x' yazalım.
 -- keyword: subquery,update,replace(),min()
 select * from Categories
 update [nortwind].[dbo].[Categories] SET CategoryName=replace(cat.CategoryName,'e','x') from Categories as cat where cat.CategoryID=(select min(CategoryID) from Categories)
 
--- Nortwind databasesinden Categories tablosundaki CategoryID 4 ile 5 arasındaki CategoryName yerine sadece 'xxxxx' yazalım.
+-- SORU
+-- Nortwind databasesinden Categories tablosundaki CategoryID 4 ile 5 arasındaki CategoryName bütün 'a' harfi yerine 'x' yazalım. 
 -- keyword: subquery,update,replace(),between()
+select * from Categories
+update [nortwind].[dbo].[Categories] SET CategoryName=replace(cat.CategoryName,'a','x') from Categories as cat where cat.CategoryID between 4 and 5;
 
-select DATALENGTH(cat.CategoryName) as 'Değiştir' from Categories as cat
+-- CONCAT
+-- concat: İlgili sutunda sonuna istediğimiz harf veya kelime yazmamıza olanak sağlar
+select concat(cat.CategoryName,' INC') from Categories as cat 
+
+-- SORU
+-- Nortwind databasesinden Categories tablosundaki bütün CategoryName sonuna INC ekleyelim.
+-- keyword: subquery,update,replace(),between()
+-- Döngü (while)
+-- update [nortwind].[dbo].[Categories] SET CategoryName=replace(cat.CategoryName,'',(concat(cat.CategoryName,' INC') from Categories as cat) ) from Categories as cat 
+--
+
+-- REVERSE
+-- reverse: Verilen kelimeyi ters yazdırır. Yani 1 harf sona en son haf başa gelir.
+select cat.CategoryName from Categories as cat 
+select reverse(cat.CategoryName) from Categories as cat 
+
+
+-- LEN
+-- LEN: Verilen kelimeyi harf sayısını bulur
+select cat.CategoryName as 'Computer Name' from Categories as cat
+select cat.CategoryName 'Computer Name' from Categories as cat 
+select len(cat.CategoryName) from Categories as cat 
+
 
 -- https://www.w3schools.com/sql/default.asp
 
