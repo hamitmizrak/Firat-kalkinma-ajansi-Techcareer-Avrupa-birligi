@@ -275,8 +275,7 @@ select concat(cat.CategoryName,' INC') from Categories as cat
 -- Nortwind databasesinden Categories tablosundaki bütün CategoryName sonuna INC ekleyelim.
 -- keyword: subquery,update,replace(),between()
 -- Döngü (while)
--- update [nortwind].[dbo].[Categories] SET CategoryName=replace(cat.CategoryName,'',(concat(cat.CategoryName,' INC') from Categories as cat) ) from Categories as cat 
---
+
 
 -- REVERSE
 -- reverse: Verilen kelimeyi ters yazdırır. Yani 1 harf sona en son haf başa gelir.
@@ -295,6 +294,30 @@ select len(cat.CategoryName) from Categories as cat
 
 --------------------------------------------------------------------------------------------------
 -- TARIH
+-- 2024-03-28 12-01:14:300
+
+-- GETDATE()
+-- getdate() = Şu anda ki zamanı bize verir.
+select getdate() as 'şu anda ki Tarih';
+
+-- DATEADD()
+-- dateadd() = Zamanı yıl, ay için ileri tarihe göre alsın.
+select dateadd(month,1,getdate()) as 'Şu andaki zamanın ayı için 1 ay ileri'
+select dateadd(year,5,getdate())  as 'Şu andaki zamanın yılı için 5 yıl ileri'
+
+-- DATEDIFF()
+-- datediff() = belirtilen 2 zaman için ara farkını bize gösterir.
+select datediff (day, '01.01.1990',getdate());
+select datediff(month,'01.01.1990',getdate());
+select datediff (year,'01.01.1990',getdate());
+
+-- DATEPART()
+-- datepart() = Zamanı Göstersin
+select datepart (hour,getdate()) as 'Saat'
+select datepart(day,getdate()) as 'Gün'
+select datepart (WEEK,getdate()) as 'Yılın kaçıncı Haftası'
+select datepart (month,getdate()) as 'Yılın kaçıncı Ay'
+select datepart (year,getdate()) 'YEAR'
 
 -- ------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
