@@ -224,10 +224,30 @@ select cot(45) as 'Cotanjant'
 --------------------------------------------------------------------------------------------------
 -- STRING
 select * from Categories
+-- Bütün karakterleri BÜYÜK harf yap
 select upper(cat.CategoryName) as 'Kategori Adı'  from Categories as cat
+
+-- Bütün karakteri KÜÇüK harf yap
 select lower(cat.CategoryName) as 'Kategori Adı'  from Categories as cat
+
+-- ltrim: soldan eğer boşluk varsa sil (Validation işlemlerinde kullanmak mantıklı)
 select ltrim(cat.CategoryName) as 'Soldaki boşlukları al'  from Categories as cat
+
+-- trim: sağdan eğer boşluk varsa sil (Validation işlemlerinde kullanmak mantıklı)
 select rtrim(cat.CategoryName) as 'Sağdaki boşlukları al'  from Categories as cat
+
+-- substring: Kelimeyi parçalamak için kullanıyoruz.
+-- Bütün CategoryName'den ilk 3 karakterini bana getir.
+select SUBSTRING(cat.CategoryName,1,3) as 'Category Name' from Categories as cat
+
+-- replace: Değiştirmek için kullanıyoruz.
+select * from Categories;
+select REPLACE(cat.CategoryName,'Bilgisayar','Değişti') as 'Değiştir' from Categories as cat
+-- Nortwind databasesinden Categories tablosundaki 'Bilgisayar' kelimesi yerine 'Computer' olarak değiştirin. 
+
+-- update Categories SET CategoryName='Laptop', Description='Lenovo 1244' where CategoryID=13
+
+-- https://www.w3schools.com/sql/default.asp
 
 --------------------------------------------------------------------------------------------------
 -- TARIH
@@ -238,7 +258,6 @@ select rtrim(cat.CategoryName) as 'Sağdaki boşlukları al'  from Categories as
 -- DML (Data Manipulation Language)
 
 use nortwind;
-
 select * from Categories;
 
 -- Insert
