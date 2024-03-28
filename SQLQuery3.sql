@@ -106,6 +106,8 @@ select * from Categories where CategoryID=(select max(CategoryID) from Categorie
 
 -- nortwind databasenden Categories tablosundaki categoryID küçük olanı listeyelim.
 select * from [nortwind].[dbo].[Categories] as cat where cat.CategoryID=(select min(CategoryID) from Categories);
+
+
  
 --------------------------------------------------------------------------------------------------
 -- TOP
@@ -252,9 +254,13 @@ update Categories SET CategoryName=REPLACE(cat.CategoryName,'Bilgisayar','Comput
 -- 2.YOL
 update [nortwind].[dbo].[Categories]  SET CategoryName=replace(cat.CategoryName,'Bilgisayar','Computer') from Categories as cat
 
--- Nortwind databasesinden Categories tablosundaki CategoryID en küçük veri için bütün 'e' harfi yerine 'x' yazalım.
+-- Nortwind databasesinden Categories tablosundaki CategoryID en küçük olan veri için bütün 'e' harfi yerine 'x' yazalım.
+-- keyword: subquery,update,replace(),min()
+select * from Categories
+update [nortwind].[dbo].[Categories] SET CategoryName=replace(cat.CategoryName,'e','x') from Categories as cat where cat.CategoryID=(select min(CategoryID) from Categories)
 
-
+-- Nortwind databasesinden Categories tablosundaki CategoryID 4 ile 5 arasındaki CategoryName yerine sadece 'xxxxx' yazalım.
+-- keyword: subquery,update,replace(),between()
 
 select DATALENGTH(cat.CategoryName) as 'Değiştir' from Categories as cat
 
@@ -300,7 +306,3 @@ delete from Categories where CategoryID=13
 select * from Region
 union
 select * from [nortwind].[dbo].[RegionData]
-
-
-
-update Categories SET CategoryName=REPLACE(cat.CategoryName,'Değişti','Bilgisayar') from Categories as cat
